@@ -1,0 +1,42 @@
+---
+paw_ansible_role_jenkins::jenkins_admin_username: admin
+paw_ansible_role_jenkins::jenkins_admin_password: admin
+paw_ansible_role_jenkins::jenkins_package_state: present
+paw_ansible_role_jenkins::jenkins_prefer_lts: false
+paw_ansible_role_jenkins::jenkins_connection_delay: 5
+paw_ansible_role_jenkins::jenkins_connection_retries: 60
+paw_ansible_role_jenkins::jenkins_home: "/var/lib/jenkins"
+paw_ansible_role_jenkins::jenkins_hostname: localhost
+paw_ansible_role_jenkins::jenkins_http_port: 8080
+paw_ansible_role_jenkins::jenkins_jar_location: "/opt/jenkins-cli.jar"
+paw_ansible_role_jenkins::jenkins_url_prefix: ''
+paw_ansible_role_jenkins::jenkins_options: ''
+paw_ansible_role_jenkins::jenkins_java_options: "-Djenkins.install.runSetupWizard=false"
+paw_ansible_role_jenkins::jenkins_plugins: []
+paw_ansible_role_jenkins::jenkins_plugins_state: present
+paw_ansible_role_jenkins::jenkins_plugin_updates_expiration: 86400
+paw_ansible_role_jenkins::jenkins_plugin_timeout: 30
+paw_ansible_role_jenkins::jenkins_plugins_install_dependencies: true
+paw_ansible_role_jenkins::jenkins_updates_url: https://updates.jenkins.io
+paw_ansible_role_jenkins::jenkins_admin_password_file: ''
+paw_ansible_role_jenkins::jenkins_process_user: jenkins
+paw_ansible_role_jenkins::jenkins_process_group: "{{ jenkins_process_user }}"
+paw_ansible_role_jenkins::jenkins_init_changes:
+- option: JENKINS_OPTS
+  value: "{{ jenkins_options }}"
+- option: JAVA_OPTS
+  value: "{{ jenkins_java_options }}"
+- option: JENKINS_HOME
+  value: "{{ jenkins_home }}"
+- option: JENKINS_PREFIX
+  value: "{{ jenkins_url_prefix }}"
+- option: JENKINS_PORT
+  value: "{{ jenkins_http_port }}"
+paw_ansible_role_jenkins::jenkins_proxy_host: ''
+paw_ansible_role_jenkins::jenkins_proxy_port: ''
+paw_ansible_role_jenkins::jenkins_proxy_noproxy:
+- 127.0.0.1
+- localhost
+paw_ansible_role_jenkins::jenkins_init_folder: "/etc/systemd/system/jenkins.service.d"
+paw_ansible_role_jenkins::jenkins_init_file: "{{ jenkins_init_folder }}/override.conf"
+paw_ansible_role_jenkins::jenkins_restart_behavior: service

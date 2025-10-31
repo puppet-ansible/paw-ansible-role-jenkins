@@ -1,0 +1,168 @@
+{
+  "puppet_task_version": 1,
+  "supports_noop": false,
+  "description": "Execute the entire Ansible role imperatively",
+  "input_method": "stdin",
+  "parameters": {
+    "jenkins_admin_username": {
+      "description": "Ansible role variable (default: admin)",
+      "type": "Optional[String]"
+    },
+    "jenkins_admin_password": {
+      "description": "Ansible role variable (default: admin)",
+      "type": "Optional[String]"
+    },
+    "jenkins_package_state": {
+      "description": "Change this to `latest` to update Jenkins if a newer version is available.",
+      "type": "Optional[String]"
+    },
+    "jenkins_prefer_lts": {
+      "description": "",
+      "type": "Optional[Boolean]"
+    },
+    "jenkins_connection_delay": {
+      "description": "Ansible role variable (default: 5)",
+      "type": "Optional[Integer]"
+    },
+    "jenkins_connection_retries": {
+      "description": "Ansible role variable (default: 60)",
+      "type": "Optional[Integer]"
+    },
+    "jenkins_home": {
+      "description": "Ansible role variable (default: /var/lib/jenkins)",
+      "type": "Optional[String]"
+    },
+    "jenkins_hostname": {
+      "description": "Ansible role variable (default: localhost)",
+      "type": "Optional[String]"
+    },
+    "jenkins_http_port": {
+      "description": "Ansible role variable (default: 8080)",
+      "type": "Optional[Integer]"
+    },
+    "jenkins_jar_location": {
+      "description": "Ansible role variable (default: /opt/jenkins-cli.jar)",
+      "type": "Optional[String]"
+    },
+    "jenkins_url_prefix": {
+      "description": "Ansible role variable (default: )",
+      "type": "Optional[String]"
+    },
+    "jenkins_options": {
+      "description": "Ansible role variable (default: )",
+      "type": "Optional[String]"
+    },
+    "jenkins_java_options": {
+      "description": "Ansible role variable (default: -Djenkins.install.runSetupWizard=false)",
+      "type": "Optional[String]"
+    },
+    "jenkins_plugins": {
+      "description": "Plugin list can use the plugin name, or a name/version dict.",
+      "type": "Optional[Array]"
+    },
+    "jenkins_plugins_state": {
+      "description": "Ansible role variable (default: present)",
+      "type": "Optional[String]"
+    },
+    "jenkins_plugin_updates_expiration": {
+      "description": "Ansible role variable (default: 86400)",
+      "type": "Optional[Integer]"
+    },
+    "jenkins_plugin_timeout": {
+      "description": "Ansible role variable (default: 30)",
+      "type": "Optional[Integer]"
+    },
+    "jenkins_plugins_install_dependencies": {
+      "description": "Ansible role variable (default: true)",
+      "type": "Optional[Boolean]"
+    },
+    "jenkins_updates_url": {
+      "description": "Ansible role variable (default: https://updates.jenkins.io)",
+      "type": "Optional[String]"
+    },
+    "jenkins_admin_password_file": {
+      "description": "Ansible role variable (default: )",
+      "type": "Optional[String]"
+    },
+    "jenkins_process_user": {
+      "description": "Ansible role variable (default: jenkins)",
+      "type": "Optional[String]"
+    },
+    "jenkins_process_group": {
+      "description": "Ansible role variable (default: {{ jenkins_process_user }})",
+      "type": "Optional[String]"
+    },
+    "jenkins_init_changes": {
+      "description": "Ansible role variable (default: [{\"option\"=>\"JENKINS_OPTS\", \"value\"=>\"{{ jenkins_options }}\"}, {\"option\"=>\"JAVA_OPTS\", \"value\"=>\"{{ jenkins_java_options }}\"}, {\"option\"=>\"JENKINS_HOME\", \"value\"=>\"{{ jenkins_home }}\"}, {\"option\"=>\"JENKINS_PREFIX\", \"value\"=>\"{{ jenkins_url_prefix }}\"}, {\"option\"=>\"JENKINS_PORT\", \"value\"=>\"{{ jenkins_http_port }}\"}])",
+      "type": "Optional[Array]"
+    },
+    "jenkins_proxy_host": {
+      "description": "If Jenkins is behind a proxy, configure this.",
+      "type": "Optional[String]"
+    },
+    "jenkins_proxy_port": {
+      "description": "Ansible role variable (default: )",
+      "type": "Optional[String]"
+    },
+    "jenkins_proxy_noproxy": {
+      "description": "Ansible role variable (default: [\"127.0.0.1\", \"localhost\"])",
+      "type": "Optional[Array]"
+    },
+    "jenkins_init_folder": {
+      "description": "Ansible role variable (default: /etc/systemd/system/jenkins.service.d)",
+      "type": "Optional[String]"
+    },
+    "jenkins_init_file": {
+      "description": "Ansible role variable (default: {{ jenkins_init_folder }}/override.conf)",
+      "type": "Optional[String]"
+    },
+    "jenkins_restart_behavior": {
+      "description": "Ansible role variable (default: service)",
+      "type": "Optional[String]"
+    },
+    "par_tags": {
+      "description": "An array of Ansible tags to execute (optional)",
+      "type": "Optional[Array[String]]"
+    },
+    "par_skip_tags": {
+      "description": "An array of Ansible tags to skip (optional)",
+      "type": "Optional[Array[String]]"
+    },
+    "par_start_at_task": {
+      "description": "The name of the task to start execution at (optional)",
+      "type": "Optional[String]"
+    },
+    "par_limit": {
+      "description": "Limit playbook execution to specific hosts (optional)",
+      "type": "Optional[String]"
+    },
+    "par_verbose": {
+      "description": "Enable verbose output from Ansible (optional)",
+      "type": "Optional[Boolean]"
+    },
+    "par_check_mode": {
+      "description": "Run Ansible in check mode (dry-run) (optional)",
+      "type": "Optional[Boolean]"
+    },
+    "par_timeout": {
+      "description": "Timeout in seconds for playbook execution (optional)",
+      "type": "Optional[Integer]"
+    },
+    "par_user": {
+      "description": "Remote user to use for Ansible connections (optional)",
+      "type": "Optional[String]"
+    },
+    "par_env_vars": {
+      "description": "Additional environment variables for ansible-playbook execution (optional)",
+      "type": "Optional[Hash]"
+    }
+  },
+  "implementations": [
+    {
+      "name": "paw_ansible_role_jenkins.rb",
+      "requirements": [
+        "puppet-agent"
+      ]
+    }
+  ]
+}
